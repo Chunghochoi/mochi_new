@@ -5,7 +5,6 @@ import mediapipe as mp
 
 app = Flask(__name__)
 
-# Sử dụng MediaPipe Hands (qua mediapipe-runtime)
 mp_hands = mp.solutions.hands.Hands(
     static_image_mode=True,
     max_num_hands=1,
@@ -15,7 +14,7 @@ mp_draw = mp.solutions.drawing_utils
 
 @app.route('/')
 def home():
-    return "✅ ESP32-CAM Gesture Server (mediapipe-runtime) is running!"
+    return "✅ ESP32-CAM Gesture Server (Docker + Python 3.10 + mediapipe-runtime) is running!"
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -27,7 +26,6 @@ def upload():
 
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = mp_hands.process(rgb)
-
         gesture = "No hand"
         if results.multi_hand_landmarks:
             gesture = "Hand detected"
@@ -37,4 +35,4 @@ def upload():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.
+    app.run(host="0.0.0.0", port=5000)
