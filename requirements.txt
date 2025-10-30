@@ -3,4 +3,3 @@ gunicorn
 opencv-python-headless
 mediapipe-runtime
 numpy
-python-3.10.13
