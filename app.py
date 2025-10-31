@@ -1,4 +1,3 @@
-[file: chunghochoi/mochi_new/mochi_new-9d3c4e3bf50c9319c5eed24367589aa29e0f2b4c/app.py]
 from flask import Flask, request, jsonify, Response
 import cv2, numpy as np, mediapipe as mp, threading, time
 import queue # ✅ Thêm thư viện hàng đợi
